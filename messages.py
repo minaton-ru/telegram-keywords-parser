@@ -27,7 +27,7 @@ async def dump_all_messages(channel, client):
         async for message in client.iter_messages(channel, limit=limit_msg):
             all_messages.append(message.text)
             print(message.text)
-            print('____')
+            print('_____')
         total_messages = len(all_messages)
         if total_count_limit != 0 and total_messages >= total_count_limit:
             break
