@@ -14,9 +14,9 @@ api_hash = config['Telegram']['API_HASH']
 username = config['Telegram']['USERNAME']
 
 start_date = datetime.datetime.now() - relativedelta(days=1)
-chat = 'javascript_jobs_feed'
+chat = 'your telegram chat name'
 mylimit = 4
-query='Григорий'
+query='your text to search'
 
 app = Client(name=username, api_id=api_id, api_hash=api_hash)
 
