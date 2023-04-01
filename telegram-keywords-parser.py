@@ -12,7 +12,7 @@ api_hash = config['Telegram']['API_HASH']
 username = config['Telegram']['USERNAME']
 
 start_date = datetime.datetime.now() - relativedelta(days=1) # Формируем дату на нужное количество дней назад
-chat = 'javascript_jobs_feed' # Название нужного телеграм-канала
+chat = '' # Название нужного телеграм-канала
 limit = 10 # Максимальное количество сообщений, в которых будет поиск
 
 with open('keywords.txt', 'r') as file:
