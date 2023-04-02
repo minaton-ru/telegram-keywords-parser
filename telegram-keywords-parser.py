@@ -25,7 +25,13 @@ async def main():
 		for chat in chat_list:
 			async for message in app.get_chat_history(chat, limit=limit):
 				if message.date >= start_date: # Только сообщения, которые появились после нужной даты
-					message_text = message.text
+					if not message.text:
+						if message.photo and message.caption:
+							message_text = message.caption
+						else:
+							return
+					else:
+						message_text = message.text
 					message_words_list = re.sub("[^a-zа-яёїієґ0-9_-]", " ",  message_text.lower()).split() # Очищаем текст сообщения от символов и пунктуации, разбиваем на слова
 					if any(word in keywords_list for word in message_words_list): # Проверяем вхождение каждого из ключевых слов в тексте сообщения
 						print(f'==== {message.date} https://t.me/{chat}/{message.id}')
