@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-links.txt
+chats.txt
 keywords.txt
 *.json
 *.session
