@@ -1,0 +1,10 @@
+[project]
+name = "telegram-keywords-parser"
+version = "0.2.0"
+description = "Finds messages containing keywords in public Telegram channels and chats"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic-settings>=2.16.3",
+    "telethon>=1.45.0",
+]
