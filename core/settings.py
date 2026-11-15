@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     """Telegram API credentials; variable names use the TG_ prefix."""
 
     model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf-8", env_prefix="TG_", extra="ignore"
+        env_file=".env", env_file_encoding="utf-8", env_prefix="TG_"
     )
 
     api_id: int
