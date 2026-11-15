@@ -1,6 +1,6 @@
-# telegram-keywords-parser
+# Telegram chats keywords parser
 
-A Telegram application - python script - that parses messages from a list of public channels/chats and takes only those messages that contain your keywords.
+Telegram application - python script - that parses messages from a list of public channels/chats and takes only those messages that contain your keywords.
 
 
 ## Requirements
