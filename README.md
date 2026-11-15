@@ -23,22 +23,28 @@ pip install -r requirements.txt
 
 ## Configuration
 
-Create a `.env` file in the project root with your Telegram credentials:
+Create a `.env` file in the project root with your Telegram credentials and run parameters:
 
 ```dotenv
 TG_API_ID=1234567
 TG_API_HASH=0123456789abcdef0123456789abcdef
 TG_SESSION_NAME=my_session
+TG_DAYS_BACK=2
+TG_CHATS_FILE=chats.txt
+TG_KEYWORDS_FILE=keywords.txt
 ```
 
-`TG_SESSION_NAME` is optional and sets the name of the session file `.session` (default: `keywords_parser`).
+Only `TG_API_ID` and `TG_API_HASH` are required. The other variables are optional:
 
-Create two text files in the project root, one entry per line:
+- `TG_SESSION_NAME` - name of the session file `.session` (default: `keywords_parser`).
+- `TG_DAYS_BACK` - how many days back to search (default: `2`).
+- `TG_CHATS_FILE` - path to the file with chats (default: `chats.txt`).
+- `TG_KEYWORDS_FILE` - path to the file with keywords (default: `keywords.txt`).
+
+Create two text files, one entry per line:
 
 - `chats.txt` - public usernames of the channels and chats to scan.
 - `keywords.txt` - keywords to look for.
-
-How many days back to search is set by `DAYS_BACK` in `core/constants.py` (default: 2).
 
 ## Usage
 
@@ -61,8 +67,7 @@ Only public channels and chats that have a username are supported. Private chats
 ```
 main.py             entry point: builds the objects and starts the search
 core/
-  constants.py      run parameters
-  settings.py       credentials loaded from .env
+  settings.py       credentials and run parameters loaded from .env
   models.py         data classes
   interfaces.py     abstract contracts
   services.py       search logic
