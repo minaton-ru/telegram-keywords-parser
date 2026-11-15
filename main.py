@@ -5,7 +5,6 @@ from datetime import datetime, timedelta, timezone
 from telethon import TelegramClient
 
 from core.adapters import ConsoleReporter, TelethonMessageProvider
-from core.constants import CHATS_FILE, DAYS_BACK, KEYWORDS_FILE
 from core.services import KeywordMatcher, KeywordSearchService
 from core.settings import Settings
 from core.utils import read_lines
@@ -13,9 +12,9 @@ from core.utils import read_lines
 
 async def run_parser() -> None:
     settings = Settings()
-    chat_usernames = read_lines(CHATS_FILE)
-    matcher = KeywordMatcher(read_lines(KEYWORDS_FILE))
-    since = datetime.now(timezone.utc) - timedelta(days=DAYS_BACK)
+    chat_usernames = read_lines(settings.chats_file)
+    matcher = KeywordMatcher(read_lines(settings.keywords_file))
+    since = datetime.now(timezone.utc) - timedelta(days=settings.days_back)
 
     client = TelegramClient(
         settings.session_name, settings.api_id, settings.api_hash.get_secret_value()
