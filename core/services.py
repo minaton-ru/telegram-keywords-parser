@@ -1,6 +1,5 @@
 """Search logic; depends only on the abstract contracts."""
 import re
-import sys
 from collections.abc import Iterable
 from datetime import datetime
 
@@ -33,9 +32,10 @@ class KeywordSearchService:
 
     async def run_search(self, chat_usernames: Iterable[str], since: datetime) -> None:
         for chat_username in chat_usernames:
+            print(f"Start for fetching in {chat_username}")
             try:
                 async for message in self._provider.fetch_messages(chat_username, since):
                     if self._matcher.match_text(message.text):
                         self._reporter.report_message(message)
             except ChatUnavailableError as error:
-                print(f"[{chat_username}] skipped: {error}", file=sys.stderr)
+                print(f"Chat {chat_username} skipped: {error}")
